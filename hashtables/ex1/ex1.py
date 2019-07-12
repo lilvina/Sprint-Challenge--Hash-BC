@@ -12,6 +12,19 @@ def get_indices_of_item_weights(weights, length, limit):
     """
     YOUR CODE HERE
     """
+    index = 0
+
+    for w in weights:
+        hash_table_insert(ht, w, index)
+        index += 1
+
+    for i in range(len(weights)):
+        pair = limit - weights[i] #value we are looking for
+        # check to see if pair exists
+        answer_pair = hash_table_retrieve(ht, pair)
+        if answer_pair is not None:
+            print(answer_pair, i)
+            return(answer_pair, i)
 
     return None
 
@@ -21,3 +34,8 @@ def print_answer(answer):
         print(str(answer[0] + " " + answer[1]))
     else:
         print("None")
+
+test_weights = [21, 0]
+test_limit = 21
+
+get_indices_of_item_weights(test_weights, len(test_weights), test_limit)
